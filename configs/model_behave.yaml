@@ -1,0 +1,59 @@
+data:
+  smplh_path: 'data/smplh'
+  smplx_path: 'data/smplx'
+  pca_params_dir: 'data/behave/behave_pca_models/pca_models_n32_d32.pkl'
+  object_num: 20
+
+dataset:
+  name: 'behave'
+  object_num: 20
+  bg_aug_ratio: 0.5
+  bg_dir: '/public/home/huochf/datasets/LineMOD/bg_images/VOC2012/JPEGImages/'
+  img_size: 256
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+  scale_factor: 0.3
+  rot_factor: 30
+  trans_factor: 0.02
+  color_scale: 0.2
+  rot_aug_rate: 0.6
+  bg_aug_ratio: 0.5
+  rescale_ratio: 0.5
+
+  behave:
+    use_fake: True
+    datalist_train_real: 'data/behave/behave_real_train_data_list.pkl'
+    datalist_test_real: 'data/behave/behave_real_test_data_list.pkl'
+    datalist_fake: 'data/behave/behave_fake_data_list.pkl'
+    init_cam_translation: [0, 0.75, 2]
+
+
+model:
+  hoiflow:
+    hidden_dim: 1024
+    num_layers: 4
+    num_blocks_per_layer: 2
+    context_features: 2048
+    num_pose: 21
+
+  hoi_decoder:
+    anchor_num: 32
+    pca_dim: 32
+  smpl_header:
+    in_dim: 2048
+    hidden_dim: 1024
+
+
+train:
+  lr: 0.0001
+  weight_decay: 0.0001
+  batch_size: 32
+  num_workers: 16
+  resume: True
+  checkpoint: ''
+  log_interval: 10
+  eval_interval: 1
+  max_epoch: 150
+  drop_at: 120
+  checkpoint_out_dir: 'outputs/stackflow_behave_aug'
+  exp: 'stackflow_behave_aug_exp'
