@@ -76,7 +76,7 @@ There may be some wrong with `obj_track/objs/08.ply`, download from this copy, a
 
 #### 3. Background Images
 
-We follow [[CDPN]](https://github.com/LZGMatrix/CDPN_ICCV2019_ZhigangLi) to augment our training data by changing the background. Please go to [[VOC 2012]](http://host.robots.ox.ac.uk/pascal/VOC/index.html) to download the [[background images]](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar), unzip them and put them into the folder `VOC_DIR`.
+We follow [[CDPN]](https://github.com/LZGMatrix/CDPN_ICCV2019_ZhigangLi) to augment our training data by changing the background. Please go to [[VOC 2012]](http://host.robots.ox.ac.uk/pascal/VOC/index.html) to download the [[background images]](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar), unzip them, and put them into the folder `VOC_DIR`.
 
 ### Preprocess Datasets
 
@@ -171,6 +171,8 @@ cd $PROJECT_DIR
 python -m stackflow.train_bstro_hoi --config configs/bstro_hoi_behave.yaml
 (python -m stackflow.train_bstro_hoi --config configs/bstro_hoi_intercap.yaml)
 ```
+
+We have provided the [pretrained models](https://shanghaitecheducn-my.sharepoint.com/:f:/g/personal/huochf_shanghaitech_edu_cn/EtE10I5tSjBJkYAT_3djn_YBpQQm0ud8PNhqVvM5KrPItQ?e=LZFqbx) in one drive.
 
 ### Evaluate Models
 
