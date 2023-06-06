@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>StackFLOW: Monocular Human-Object Reconstruction by Stacked Normalizing Flow with Offset</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+<section>
+    <div class="column has-text-centered">
+		<h1 class="publication-title">StackFLOW: Monocular Human-Object Reconstruction by Stacked Normalizing Flow with Offset</h1>
+		<div class="publication-authors">
+			<span class="author-block">Chaofan Huo</span><sup>1,2</sup>,
+			<span class="author-block"><a href="https://faculty.sist.shanghaitech.edu.cn/faculty/shiye/">Ye Shi</a></span><sup>1,2</sup>,
+			<span class="author-block"><a href="http://yuexinma.me/">Yuexin Ma</a></span><sup>1,2</sup>,
+			<span class="author-block"><a href="http://xu-lan.com/">Lan Xu</a></span><sup>1,2</sup>,
+			<span class="author-block"><a href="http://vic.shanghaitech.edu.cn/vrvc/en/people/">Jingyi Yu</a></span><sup>1,2</sup>,
+			<span class="author-block"><a href=" http://faculty.sist.shanghaitech.edu.cn/faculty/wangjingya/">Jingya Wang</a></span><sup>*1,2</sup>
+		</div>
+		<div class="publication-authors">
+			<span class="affiliations-block"><sup>1</sup><a href="https://www.shanghaitech.edu.cn/">ShanghaiTech University</a></span>
+			<br>
+			<span class="affiliations-block"><sup>2</sup><a href="https://sist.shanghaitech.edu.cn/shznsjyxjyygcjsyjzx/list.htm">Shanghai Engineering Research Center of Intelligent Vision and Imaging</a></span>
+			<br>
+			<span class="affiliations-block"><sup>*</sup>Corresponding author.</span>
+			<br>
+			In <span class="conference-block"><a href="https://ijcai-23.org/">IJCAI 2023, the 32nd International Joint Conference on Artificial Intelligence.</a></span>
+		</div>
+
+		<div class="pad">
+			<span class="pad"><a><button class="button"><img src="./res/arxiv.ico" style="vertical-align: middle;"><span class="button-text">Paper</span></button></a></span>
+			<span class="pad"><a><button class="button"><img src="./res/youtube.ico" style="vertical-align: middle;"><span class="button-text">Video</span></button></a></span>
+			<span class="pad"><a href="https://github.com/huochf/StackFLOW"><button class="button"><img src="./res/github.ico" style="vertical-align: middle;"><span class="button-text">Code</span></button></a></span>
+		</div>
+		
+		<div>
+			<video autoplay="" loop="" muted="" playsinline="" width="100%" ><source src="res/offsets_demo.mp4" type="video/mp4"></video>
+		</div>
+
+	</div>
+</section>
+
+<section>
+	<div class="column has-text-centered">
+		<h1 class="section-title">Abstract</h1>
+		<p class="content">Modeling and capturing the 3D spatial arrangement of the human and the object is the key to perceiving 3D human-object interaction from monocular images. In this work, we propose to use the Human-Object Offset between anchors which are densely sampled from the surface of human mesh and object mesh to represent human-object spatial relation. Compared with previous works which use contact map or implicit distance filed to encode 3D human-object spatial relations, our method is a simple and efficient way to encode the highly detailed spatial correlation between the human and object. Based on this representation, we propose Stacked Normalizing Flow (StackFLOW) to infer the posterior distribution of human-object spatial relations from the image. During the optimization stage, we finetune the human body pose and object 6D pose by maximizing the likelihood of samples based on this posterior distribution and minimizing the 2D-3D corresponding reprojection loss. Extensive experimental results show that our method achieves impressive results on two challenging benchmarks, BEHAVE and InterCap datasets.</p>
+	</div>
+</section>
+
+<section>
+	<div class="column has-text-centered">
+		<h1 class="section-title">Main Pipeline</h1>
+		<img width="100%" src="./res/main_pipeline.png">
+		<p class="content">Main framework for our method. (a) We use human-object offset to encode the spatial relation between the human and the object. For a human-object pair, offsets are calculated and flattened into an offset vector x. Based on all offset vectors calculated from training set, the latent spatial relation space is constructed using principle component analysis. To get a vectorized representation for human-object spatial relation, the offset vector is projected into this latent spatial relation space by linear projection. Inversely, given a sample γ from this latent spatial relation space, we can reproject it to recover offset vector xˆ. The human-object instance can be reconstructed from xˆ by iterative optimization. (b) With pre-constructed latent spatial relation space, we use stacked normalizing flow to infer the posteriori distribution of human-object spatial relation for an input image. (c) In post-optimization stage, we further finetune the reconstruction results using 2D-3D reprojection loss and offset loss.</p>
+	</div>
+</section>
+
+<section>
+	<div class="column has-text-centered">
+		<h1 class="section-title">Qualitative Evaluation</h1>
+		<div class="box">
+			<span class="line"></span>
+			<span class="section-subtitle">Learned HOI Posterior Distribution</span>
+			<span class="line"></span>
+		</div>
+		<img width="24%" src="res/distribution/3_3_basketball_none_032_3.color.jpg">
+		<img width="24%" src="res/distribution/3_3_basketball_none_032_3.png">
+		<img width="24%" src="res/distribution/3_3_boxtiny_none_028_0.color.jpg">
+		<img width="24%" src="res/distribution/3_3_boxtiny_none_028_0.png">
+
+		<img width="24%" src="res/distribution/3_3_keyboard_move_026_1.color.jpg">
+		<img width="24%" src="res/distribution/3_3_keyboard_move_026_1.png">
+		<img width="24%" src="res/distribution/3_3_stool_lift_010_1.color.jpg">
+		<img width="24%" src="res/distribution/3_3_stool_lift_010_1.png">
+
+		<img width="24%" src="res/distribution/3_4_backpack_hug_038_3.color.jpg">
+		<img width="24%" src="res/distribution/3_4_backpack_hug_038_3.png">
+		<img width="24%" src="res/distribution/3_4_boxlarge_none_046_3.color.jpg">
+		<img width="24%" src="res/distribution/3_4_boxlarge_none_046_3.png">
+
+		<img width="24%" src="res/distribution/3_5_backpack_none_048_1.color.jpg">
+		<img width="24%" src="res/distribution/3_5_backpack_none_048_1.png">
+		<img width="24%" src="res/distribution/3_5_yogamat_none_047_3.color.jpg">
+		<img width="24%" src="res/distribution/3_5_yogamat_none_047_3.png">
+
+		<div class="box">
+			<span class="line"></span>
+			<span class="section-subtitle">Heavy Occlusion Cases</span>
+			<span class="line"></span>
+		</div>
+		<video autoplay="" loop="" muted="" playsinline="" width="33%" ><source src="res/occlusion/3_3_basketball_none_026_0_with_offset_recon_results.mp4" type="video/mp4"></video>
+		<video autoplay="" loop="" muted="" playsinline="" width="33%" ><source src="res/occlusion/3_3_chairblack_hand_027_1_with_offset_recon_results.mp4" type="video/mp4"></video>
+		<video autoplay="" loop="" muted="" playsinline="" width="33%" ><source src="res/occlusion/3_3_tablesmall_lean_020_1_with_offset_recon_results.mp4" type="video/mp4"></video>
+
+		<video autoplay="" loop="" muted="" playsinline="" width="33%" ><source src="res/occlusion/3_4_backpack_hug_042_0_with_offset_recon_results.mp4" type="video/mp4"></video>
+		<video autoplay="" loop="" muted="" playsinline="" width="33%" ><source src="res/occlusion/3_4_chairblack_sit_019_1_with_offset_recon_results.mp4" type="video/mp4"></video>
+		<video autoplay="" loop="" muted="" playsinline="" width="33%" ><source src="res/occlusion/3_4_tablesquare_lift_0_with_offset_recon_results.mp4" type="video/mp4"></video>
+
+		<video autoplay="" loop="" muted="" playsinline="" width="33%" ><source src="res/occlusion/3_5_chairwood_none_006_3_with_offset_recon_results.mp4" type="video/mp4"></video>
+		<video autoplay="" loop="" muted="" playsinline="" width="33%" ><source src="res/occlusion/3_5_stool_none_058_2_with_offset_recon_results.mp4" type="video/mp4"></video>
+		<video autoplay="" loop="" muted="" playsinline="" width="33%" ><source src="res/occlusion/3_3_boxlong_none_047_3_with_offset_recon_results.mp4" type="video/mp4"></video>
+
+		<div class="box">
+			<span class="line"></span>
+			<span class="section-subtitle">Intercation with Multi-Objects</span>
+			<span class="line"></span>
+		</div>
+		<video autoplay="" loop="" muted="" playsinline="" width="33%" ><source src="res/multi_objects/3_4_keyboard_typing_026_3_post_optim_recon_results.mp4" type="video/mp4"></video>
+		<video autoplay="" loop="" muted="" playsinline="" width="33%" ><source src="res/multi_objects/3_4_monitor_hand_010_0_post_optim_recon_results.mp4" type="video/mp4"></video>
+		<video autoplay="" loop="" muted="" playsinline="" width="33%" ><source src="res/multi_objects/3_4_monitor_hand_041_0_post_optim_recon_results.mp4" type="video/mp4"></video>
+
+		<video autoplay="" loop="" muted="" playsinline="" width="33%" ><source src="res/multi_objects/3_5_keyboard_none_003_3_post_optim_recon_results.mp4" type="video/mp4"></video>
+		<video autoplay="" loop="" muted="" playsinline="" width="33%" ><source src="res/multi_objects/3_5_keyboard_none_061_0_post_optim_recon_results.mp4" type="video/mp4"></video>
+		<video autoplay="" loop="" muted="" playsinline="" width="33%" ><source src="res/multi_objects/3_5_monitor_none_012_0_post_optim_recon_results.mp4" type="video/mp4"></video>
+
+		<div class="box">
+			<span class="line"></span>
+			<span class="section-subtitle">HOI Tracking</span>
+			<span class="line"></span>
+		</div>
+		<div class="text-half-parent">
+			<span class="text-half">Camera View</span>
+			<span class="text-half">Side View</span>
+		</div>
+		<div class="text-quat-parent">
+			<span class="text-quat">with offset</span>
+			<span class="text-quat">without offset</span>
+			<span class="text-quat">with offset</span>
+			<span class="text-quat">without offset</span>
+		</div>
+		<video autoplay="" loop="" muted="" playsinline="" width="100%" ><source src="res/sequences/03_08_0.1_recon_results_comparison.mp4" type="video/mp4"></video>
+		<video autoplay="" loop="" muted="" playsinline="" width="100%" ><source src="res/sequences/07_09_0.1_recon_results_comparison.mp4" type="video/mp4"></video>
+		<video autoplay="" loop="" muted="" playsinline="" width="100%" ><source src="res/sequences/10_04_0.1_recon_results_comparison.mp4" type="video/mp4"></video>
+		<video autoplay="" loop="" muted="" playsinline="" width="100%" ><source src="res/sequences/10_06_0.1_recon_results_comparison.mp4" type="video/mp4"></video>
+
+		<div class="text-half-parent">
+			<span class="text-half">Camera View</span>
+			<span class="text-half">Side View</span>
+		</div>
+		<video controls autoplay="" loop="" muted="" playsinline="" width="100%" ><source src="res/sequences/Date03_Sub03_backpack_back.0_recon_results_comparison.mp4" type="video/mp4"></video>
+		<video controls autoplay="" loop="" muted="" playsinline="" width="100%" ><source src="res/sequences/Date03_Sub03_chairwood_sit.0_recon_results_comparison.mp4" type="video/mp4"></video>
+		<video controls autoplay="" loop="" muted="" playsinline="" width="100%" ><source src="res/sequences/Date03_Sub05_stool.0_recon_results_comparison.mp4" type="video/mp4"></video>
+		<!-- <video controls autoplay="" loop="" muted="" playsinline="" width="100%" ><source src="res/sequences/10_06_0..mp4" type="video/mp4"></video> -->
+	</div>
+</section>
+
+<section>
+	<div class="column has-text-centered">
+		<h1 class="section-title">Failures</h1>
+	</div>
+</section>
+
+<section>
+	<div class="column has-text-centered">
+		<h1 class="section-title">Citation</h1>	
+	</div>
+</section>
+</body>
+
+</html>
