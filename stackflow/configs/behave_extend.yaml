@@ -1,0 +1,25 @@
+dataset:
+  name: 'BEHAVE-Extended'
+  annotation_file_train: 'data/datasets/behave_extend_train_list.pkl'
+  annotation_file_test: 'data/datasets/behave_extend_test_list.pkl'
+  with_aug_data: False
+  init_cam_translation: [0, 0.75, 2]
+
+model:
+  object_anchor_num: 64
+
+train:
+  num_workers: 32
+  batch_size: 32
+  drop_lr_at: 8
+  max_epoch: 10
+  trans_begin_epoch: 4
+  output_dir: 'outputs/stackflow/behave_extend_128/'
+  resume: ''
+
+eval:
+  optim_steps: 200
+  output_dir: 'outputs/stackflow/behave_extend/'
+  checkpoint: 'outputs/stackflow/behave_extend/latest_checkpoint.pth'
+  post_optim: True
+  optim_lr: 5e-2 # 2e-3

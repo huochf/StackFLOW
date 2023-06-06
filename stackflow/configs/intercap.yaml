@@ -1,0 +1,22 @@
+dataset:
+  name: 'InterCap'
+  annotation_file_train: 'data/datasets/intercap_train_list.pkl'
+  annotation_file_test: 'data/datasets/intercap_test_list.pkl'
+  with_aug_data: False
+  init_cam_translation: [0.10365879, 0.5680603,  2.6865814 ]
+
+train:
+  num_workers: 32
+  batch_size: 32
+  drop_lr_at: 30
+  max_epoch: 40
+  trans_begin_epoch: 10
+  output_dir: 'outputs/stackflow/intercap/'
+  resume: ''
+
+eval:
+  optim_steps: 300
+  optim_lr: 5e-2
+  output_dir: 'outputs/stackflow/intercap/'
+  checkpoint: 'outputs/stackflow/intercap/latest_checkpoint.pth'
+  post_optim: False
