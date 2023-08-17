@@ -2,7 +2,7 @@
 
 This repository contains the official implementation for our paper: StackFLOW: Monocular Human-Object Reconstruction by Stacked Normalizing Flow with Offset.
 
-[![arXiv](https://img.shields.io/badge/arXiv-NAN-00ff00.svg)]() [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)]() [<img alt="YouTube Video Views" src="https://img.shields.io/youtube/views/XIMLoLxmTDw?style=plastic">]()
+[![arXiv](https://img.shields.io/badge/arXiv-NAN-00ff00.svg)]([StackFLOW: Monocular Human-Object Reconstruction by Stacked Normalizing Flow with Offset (ijcai.org)](https://www.ijcai.org/proceedings/2023/0100.pdf)) [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)]([StackFLOW: Monocular Human-Object Reconstruction by Stacked Normalizing Flow with Offset (huochf.github.io)](https://huochf.github.io/StackFLOW/)) [<img alt="YouTube Video Views" src="https://img.shields.io/youtube/views/XIMLoLxmTDw?style=plastic">]()
 
 #### Main Pipeline
 
@@ -301,6 +301,19 @@ If you have any questions, please feel free to put forward your issues and conta
 ## Citation
 
 ```
-
+@inproceedings{ijcai2023p100,
+  title     = {StackFLOW: Monocular Human-Object Reconstruction by Stacked Normalizing Flow with Offset},
+  author    = {Huo, Chaofan and Shi, Ye and Ma, Yuexin and Xu, Lan and Yu, Jingyi and Wang, Jingya},
+  booktitle = {Proceedings of the Thirty-Second International Joint Conference on
+               Artificial Intelligence, {IJCAI-23}},
+  publisher = {International Joint Conferences on Artificial Intelligence Organization},
+  editor    = {Edith Elkind},
+  pages     = {902--910},
+  year      = {2023},
+  month     = {8},
+  note      = {Main Track},
+  doi       = {10.24963/ijcai.2023/100},
+  url       = {https://doi.org/10.24963/ijcai.2023/100},
+}
 ```
 
