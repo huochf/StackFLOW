@@ -141,3 +141,9 @@ a {
     font-family: Times;
     font-weight: 700;
 }
+
+
+.citation {
+    text-align: start;
+    padding: 10px 10px;
+}
