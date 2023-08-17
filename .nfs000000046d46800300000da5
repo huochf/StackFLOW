@@ -2,7 +2,7 @@
 
 This repository contains the official implementation for our paper: StackFLOW: Monocular Human-Object Reconstruction by Stacked Normalizing Flow with Offset.
 
-[![arXiv](https://img.shields.io/badge/arXiv-NAN-00ff00.svg)](https://www.ijcai.org/proceedings/2023/0100.pdf) [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://huochf.github.io/StackFLOW/) [<img alt="YouTube Video Views" src="https://img.shields.io/youtube/views/XIMLoLxmTDw?style=plastic">]()
+[![arXiv](https://img.shields.io/badge/arXiv-NAN-00ff00.svg)]([StackFLOW: Monocular Human-Object Reconstruction by Stacked Normalizing Flow with Offset (ijcai.org)](https://www.ijcai.org/proceedings/2023/0100.pdf)) [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)]([StackFLOW: Monocular Human-Object Reconstruction by Stacked Normalizing Flow with Offset (huochf.github.io)](https://huochf.github.io/StackFLOW/)) [<img alt="YouTube Video Views" src="https://img.shields.io/youtube/views/XIMLoLxmTDw?style=plastic">]()
 
 #### Main Pipeline
 
